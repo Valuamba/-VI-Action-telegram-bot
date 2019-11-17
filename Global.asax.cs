@@ -9,6 +9,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using TelegramSimpleBot.Models;
 using TelegramSimpleBot.App_Start;
+using TelegramSimpleBot.TimeScheduler;
 
 namespace TelegramSimpleBot
 {
@@ -20,6 +21,8 @@ namespace TelegramSimpleBot
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             await Bot.Get();
+
+            ActionScheduler.Start();
         }
     }
 }

@@ -156,13 +156,13 @@
     <Compile Include="Models\ActionUser.cs" />
     <Compile Include="Models\AppSettings.cs" />
     <Compile Include="Models\Bot.cs" />
-    <Compile Include="Models\BoundGeneralModule.cs" />
-    <Compile Include="Models\Commands\ActionCommand.cs" />
-    <Compile Include="Models\Commands\AnswerIsConfirmCommand.cs" />
-    <Compile Include="Models\Commands\AnswerIsConfirmCompleteActionCommand.cs" />
-    <Compile Include="Models\Commands\AnswerIsNotConfirmActionCommand.cs" />
-    <Compile Include="Models\Commands\AskIsConfirmCommand.cs" />
-    <Compile Include="Models\Commands\AskIsControllCommand.cs" />
+    <Compile Include="Models\Module\BindGeneralModule.cs" />
+    <Compile Include="Models\Commands\OldCommands\ActionCommand.cs" />
+    <Compile Include="Models\Commands\OldCommands\AnswerIsConfirmCommand.cs" />
+    <Compile Include="Models\Commands\OldCommands\AnswerIsConfirmCompleteActionCommand.cs" />
+    <Compile Include="Models\Commands\OldCommands\AnswerIsNotConfirmActionCommand.cs" />
+    <Compile Include="Models\Commands\OldCommands\AskIsConfirmCommand.cs" />
+    <Compile Include="Models\Commands\OldCommands\AskIsControllCommand.cs" />
     <Compile Include="Models\Commands\Command.cs" />
     <Compile Include="Models\Commands\GeneralCommandFactory.cs" />
     <Compile Include="Models\Dictionaries\MessageDictionary.cs" />
@@ -177,6 +177,8 @@
     <Compile Include="SqlModelDI\SqlConnectionFactory.cs" />
     <Compile Include="SqlModelDI\SqlService\DbAutoProvideCommand.cs" />
     <Compile Include="SqlModelDI\SqlService\IDbConnectionFactory.cs" />
+    <Compile Include="TimeScheduler\ActionScheduler.cs" />
+    <Compile Include="TimeScheduler\ActionStart.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

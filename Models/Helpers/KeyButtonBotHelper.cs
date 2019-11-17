@@ -22,7 +22,7 @@ namespace TelegramSimpleBot.Models.Helpers
                 new[] { listButton }
             };
 
-            return new ReplyKeyboardMarkup { Keyboard = keyBoardButton, ResizeKeyboard = true };
+            return new ReplyKeyboardMarkup { Keyboard = keyBoardButton, ResizeKeyboard = true, OneTimeKeyboard = true };
         }
 
         //User is complete action and want to share this with other Users

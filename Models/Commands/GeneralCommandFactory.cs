@@ -95,6 +95,17 @@ namespace TelegramSimpleBot.Models.Commands
                 _userData.CompleteAction();
             }
         }
+        //Add new user do dataBase
+        public void AddNewMemberCommand(User[] Users)
+        {
+            foreach (var user in Users)
+                _userData.AddUserToChat(user.FirstName);
+        }
+        //Delete new user from dataBase
+        public void DeleteMemberCommand(User user)
+        {
+            _userData.DeleteUser(user.FirstName);
+        }
 
         public void Change(QueueMessage queMessage, Message message, TelegramBotClient client)
         {

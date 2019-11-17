@@ -11,7 +11,7 @@ using TelegramSimpleBot.SqlModelDI.SqlService;
 
 namespace TelegramSimpleBot.Models
 {
-    public class BoundGeneralModule : NinjectModule
+    public class BindGeneralModule : NinjectModule
     {
         private static string pathSql = @"Data Source=DESKTOP-QEJJ1L4;Initial Catalog=DataLogin;Integrated Security=True";
 

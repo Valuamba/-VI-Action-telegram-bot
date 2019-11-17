@@ -32,7 +32,7 @@ namespace TelegramSimpleBot.Controllers
 
         public MessageController()
         {
-            krenel = new StandardKernel(new BoundGeneralModule());
+            krenel = new StandardKernel(new BindGeneralModule());
             //krenel.Load(Assembly.GetExecutingAssembly());
             GenerealCommands = krenel.Get<GeneralCommandFactory>();
         }
@@ -60,28 +60,40 @@ namespace TelegramSimpleBot.Controllers
             {
                 case UpdateType.Message:
 
-                    if (string.Compare("/go", message.Text) == 0)
+                    if (message.Text != null)
                     {
-                        GenerealCommands.ActionCommand(queue.MorningControlMessage, client);
+                        if (string.Compare("/go", message.Text) == 0)
+                        {
+                            GenerealCommands.ActionCommand(queue.MorningControlMessage, client);
+                        }
+
+                        if (_user.Name == null)
+                            GenerealCommands.
+                                AskIsSelectCommand(
+                                    new[]
+                                    {
+                                        queue.UserActionMessage,
+                                        queue.CancelActionMessage
+                                    },
+                                    message,
+                                    client);
+
+                        if (_user.isComplete == null)
+                            GenerealCommands.
+                                AnswerIsConfirmActionCommand(
+                                    queue.UserConfirmCompleteActionMessage,
+                                    message,
+                                    client);
                     }
 
-                    if (_user.Name == null)
-                        GenerealCommands.
-                            AskIsSelectCommand(
-                                new[]
-                                {
-                                    queue.UserActionMessage,
-                                    queue.CancelActionMessage
-                                }, 
-                                message, 
-                                client);
+                    if (message.NewChatMembers != null)
+                        GenerealCommands.AddNewMemberCommand(message.NewChatMembers);
 
-                    if (_user.isComplete == null)     
-                        GenerealCommands.
-                            AnswerIsConfirmActionCommand(
-                                queue.UserConfirmCompleteActionMessage, 
-                                message, 
-                                client);
+                    if (message.LeftChatMember != null)
+                        GenerealCommands.DeleteMemberCommand(message.LeftChatMember);
+
+
+
 
                     //if (_user.isConfirm == null)
                     //    new AskIsConfirmCommand(new ReadDataOfMySQL(new SqlConnectionFactory(pathSql))).Execute(message, client);
@@ -101,8 +113,6 @@ namespace TelegramSimpleBot.Controllers
 
                 case UpdateType.CallbackQuery:
 
-                    message = update.CallbackQuery.Message;
-
                     if(update.CallbackQuery.Data == "failed")
                        new AnswerIsNotConfirmActionCommand().Execute(message, client);
 
@@ -116,6 +126,7 @@ namespace TelegramSimpleBot.Controllers
 
                     break;
 
+                
             }
 
             //switch (update.Type)
