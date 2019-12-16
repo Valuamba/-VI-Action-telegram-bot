@@ -15,7 +15,7 @@ namespace TelegramSimpleBot.Models.Dictionaries
 
         public const string UserCompleteActionMessage = "Ля какой, ну что ж давайте посмотрим?";
         public const string CompleteActionMessage = ", красава,что тут сказать!Это мой Мальчик!";
-        public const string FailedActionMessage = ", либо у тебя здесь есть враги, либо ты мудак.Даю последнее предупреждение";
+        
 
         public const string ListLastActionMessage = "Держи, только не потеряй!";
     }
